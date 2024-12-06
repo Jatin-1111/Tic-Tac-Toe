@@ -31,6 +31,14 @@ resetButton.addEventListener('click', () => {
 });
 
 
+const triggerConfetti = () => {
+    confetti({
+        particleCount: 500,
+        spread: 100,
+        origin: { y: 0.6 }, 
+    });
+};
+
 const checkwin = () => {
     const winConditions = [
         [0, 1, 2],
@@ -53,10 +61,11 @@ const checkwin = () => {
             displayWin.innerHTML = `Player ${cells[e[0]].innerHTML} wins!`;
             isGameOver = true;
 
-            // Highlight Winning Cells
             e.forEach(index => {
                 cells[index].classList.add('winning-cell');
             });
+
+            triggerConfetti();
         }
     });
 };
